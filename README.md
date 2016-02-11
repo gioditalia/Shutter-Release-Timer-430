@@ -1,2 +1,2 @@
-# msp430-timer-shutter
-Msp430g2231 timer shutter project
+# Shutter Release Timer 430
+Msp430g2231 Shutter Release Timer project
