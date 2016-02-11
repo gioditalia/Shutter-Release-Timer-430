@@ -17,8 +17,8 @@
 
 #include <msp430.h>
 #define T    2
-char i = 0;
-char sec = 5;
+char i = 0;     //Timer_A interrupts counter
+char sec = 1;
 
 void main(void)
 {
@@ -29,7 +29,7 @@ void main(void)
 
   CCTL0 = CCIE;                             // CCR0 interrupt enabled
   TACTL = TASSEL_2 + MC_1 + ID_3;           // SMCLK/8, upmode
-  CCR0 =  62500;                            // CCR0 at 2Hz
+  CCR0 =  62500;                            // CCR0 at 2Hz = 0.5s
 
 
   P1DIR = 0x00;       // Shut down everything
@@ -58,11 +58,11 @@ void main(void)
     void Timer_A (void)
     {
       i++;
-      if(i == (sec*T)){
+      if(i == (sec*T)){     //every (sec*T) interrupts shut!
         P1OUT |= BIT6;
         __delay_cycles(100000);
         P1OUT &= ~BIT6;
-        i = 0;
+        i = 0;              //reset Timer_A interrupts counter
       }
 
     }
@@ -70,8 +70,9 @@ void main(void)
     void Port_1 (void) __attribute__((interrupt(PORT1_VECTOR)));
     void Port_1 (void)
     {
-      __delay_cycles(300000);
+      __delay_cycles(300000); // simple debounce
 
+      //set shutter time and turn on corresponding led
       switch (sec) {
           case 1:
             P1OUT &= ~BIT0;
