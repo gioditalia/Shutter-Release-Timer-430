@@ -86,7 +86,7 @@ void main(void)
             break;
         case 5:
             P1OUT &= ~BIT2;
-            sec = 10;
+            sec = 15;
             P1OUT |= BIT3;
             break;
         case 15:
