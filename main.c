@@ -89,18 +89,13 @@ void main(void)
             sec = 10;
             P1OUT |= BIT3;
             break;
-        case 10:
+        case 15:
             P1OUT &= ~BIT3;
             sec = 15;
             P1OUT |= BIT4;
             break;
-        case 15:
-            P1OUT &= ~BIT4;
-            sec = 30;
-            P1OUT |= BIT5;
-            break;
         case 30:
-            P1OUT &= ~BIT5;
+            P1OUT &= ~BIT4;
             sec = 1;
             P1OUT |= BIT0;
             break;
