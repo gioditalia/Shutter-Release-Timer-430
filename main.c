@@ -86,21 +86,16 @@ void main(void)
             break;
         case 5:
             P1OUT &= ~BIT2;
-            sec = 10;
+            sec = 15;
             P1OUT |= BIT3;
             break;
-        case 10:
+        case 15:
             P1OUT &= ~BIT3;
-            sec = 15;
+            sec = 30;
             P1OUT |= BIT4;
             break;
-        case 15:
-            P1OUT &= ~BIT4;
-            sec = 30;
-            P1OUT |= BIT5;
-            break;
         case 30:
-            P1OUT &= ~BIT5;
+            P1OUT &= ~BIT4;
             sec = 1;
             P1OUT |= BIT0;
             break;
